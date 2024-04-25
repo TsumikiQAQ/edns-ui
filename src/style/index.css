@@ -1,0 +1,923 @@
+* {
+  list-style: none;
+  text-decoration: none;
+  border-style: none;
+  color: inherit;
+}
+@font-face {
+  font-family: 'SiYuanHeiTiNormal';
+  src: url('../assets/fonts/SiYuanHeiTi/CN-Normal.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SiYuanHeiTiHeavy';
+  src: url('../assets/fonts/SiYuanHeiTi/CN-Heavy.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SiYuanHeiTiLight';
+  src: url('../assets/fonts/SiYuanHeiTi/CN-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pangmeng';
+  src: url('../assets/fonts/庞门正道标题体2.0增强版.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+a {
+  list-style: none;
+  text-decoration: none;
+  border-style: none;
+  color: inherit;
+}
+input {
+  border: solid 1px #000;
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  overflow: hidden;
+}
+#root {
+  height: 100%;
+}
+.App {
+  height: 100%;
+}
+.main {
+  height: 100%;
+  display: flex;
+  width: 104%;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
+  list-style: none;
+  text-decoration: none;
+  border-style: none;
+  color: inherit;
+  font-weight: 600;
+  color: white;
+}
+.logo svg {
+  margin-bottom: 0.3rem;
+}
+.logo h3 {
+  margin-top: 0.8rem;
+}
+.drop-zone {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+}
+.drop-zoneactive {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+}
+.Eventlistener {
+  width: 100%;
+  height: 100%;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.TopNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 5rem;
+}
+.TopNav .Btn-login {
+  background: none;
+  border: none;
+  margin-right: 2.5rem;
+  transition: 1s;
+}
+.TopNav .Btn-login a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+.TopNav .Btn-login a svg {
+  display: inline-block;
+  font-size: 26px;
+  margin-right: 0.8rem;
+  margin-bottom: 5px;
+}
+.TopNav .Btn-login:active {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.TopNav .Btn-login:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.LabelCalculator {
+  display: grid;
+  align-content: start;
+}
+.LabelCalculator .Link-List {
+  position: absolute;
+  left: 32%;
+  top: 35%;
+  width: 50%;
+}
+.LabelCalculator .Link-List .col-6 {
+  text-align: right;
+}
+.LabelCalculator .Link-List .btn {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+.LabelCalculator .Link-List .btn:hover {
+  color: black;
+}
+.LabelCalculator .Link-List .btn svg {
+  margin-bottom: 3px;
+}
+.LabelCalculator .Link-List .Buy svg {
+  margin-right: 10px;
+}
+.LabelCalculator .domain-Link a {
+  list-style: none;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+}
+.LabelCalculator .domain-Link a:hover {
+  color: black;
+}
+.LabelCalculator h2 {
+  position: absolute;
+  width: 100%;
+  height: 6%;
+  top: 15%;
+  font-weight: bold ;
+  color: white;
+  text-align: center;
+}
+.LabelCalculator .form-control {
+  position: absolute;
+  width: 50%;
+  left: 32%;
+  height: 6%;
+  top: 25%;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  transition: 0.5s;
+}
+.LabelCalculator .form-control::placeholder {
+  color: white;
+}
+.LabelCalculator .form-control:focus {
+  width: 60%;
+  height: 8%;
+  border: none;
+}
+.LabelCalculator .Search {
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  width: 15rem;
+  font-family: 'SiYuanHeiTiNormal' !important;
+  overflow: hidden;
+}
+.LabelCalculator .Search .form-check-input {
+  border: 1px solid #737373;
+}
+.LabelCalculator .Search .form-check-input:focus {
+  box-shadow: none !important;
+}
+.LabelCalculator .Search .form-check-input:checked {
+  border: 1px solid white;
+}
+.LabelCalculator .Search .form-control:focus {
+  box-shadow: none !important;
+}
+.LabelCalculator .Search .ClassSearch {
+  padding: 0;
+  height: 100%;
+  border-right: 1px solid #646464;
+}
+.LabelCalculator .Search .ClassSearch .list-group {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  font-size: 16px;
+}
+.LabelCalculator .Search .ClassSearch .Cl-List {
+  padding-left: 3rem;
+  padding-bottom: 1rem;
+  height: 82.5vh;
+  overflow-y: scroll;
+  margin-right: 0.5rem;
+}
+.LabelCalculator .Search .ClassSearch .Cl-List::-webkit-scrollbar {
+  width: 5px;
+}
+.LabelCalculator .Search .ClassSearch .Cl-List::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 7px;
+}
+.LabelCalculator .Search .ClassSearch .Cl-List::-webkit-scrollbar-track {
+  border-radius: 7px;
+}
+.LabelCalculator .Search .ClassSearch .input-group-text {
+  border: 0 none !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  color: white;
+}
+.LabelCalculator .Search .ClassSearch .input-group-text .form-check-input {
+  background-color: #000000;
+  margin-right: 0.5rem;
+  margin-left: 0.1rem;
+  margin-top: 0.3rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 0 ;
+}
+.LabelCalculator .Search .ClassSearch .list-group-item {
+  display: flex;
+  border: 0 none !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  color: white;
+  margin-bottom: 0.8rem;
+}
+.LabelCalculator .Search .ClassSearch .list-group-item svg {
+  border: none;
+  background: transparent;
+  position: absolute;
+  bottom: 0.4rem;
+  top: 0.3rem;
+  left: -1.5rem;
+  color: white;
+}
+.LabelCalculator .Search .ClassSearch .Search-Cl svg {
+  border: none;
+  background: transparent;
+  position: absolute;
+  font-size: 20px;
+  left: 0.5rem;
+  top: 1.1rem;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #646464;
+}
+.LabelCalculator .Search .ClassSearch .Search-Cl .form-control {
+  padding-left: 2rem;
+  color: #fff;
+  border: none;
+  border-left: 1px solid #646464;
+  border-radius: 0;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #363636;
+}
+.LabelCalculator .Search .ClassSearch .class .form-control {
+  border-left: none;
+}
+.LabelCalculator .Search .ClassSearch .Search-Cl .form-control::placeholder {
+  color: #646464;
+}
+.Material {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  align-content: start;
+}
+.Material .LabelCalculator {
+  width: 100%;
+}
+.Material .LabelContent {
+  width: 100%;
+  height: 92.5vh;
+  margin-left: -0.1rem;
+  padding-bottom: 3rem;
+  margin-top: 15%;
+  margin-left: 25%;
+  color: white;
+  overflow-y: scroll;
+}
+.Material .LabelContent::-webkit-scrollbar {
+  width: 5px;
+}
+.Material .LabelContent::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 7px;
+}
+.Material .LabelContent h2 {
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+.Material .LabelContent .ModleList {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.Material .LabelContent .ModleList .Modlebox {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  color: white;
+  display: grid;
+  width: 12rem;
+  height: 12rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+.Material .LabelContent .ModleList .Modlebox-isselect {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  color: white;
+  width: 12rem;
+  height: 12rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid #869fbd;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+.Material .LabelContent .ModleList .Modlebox:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  border-color: #4B535C;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.Material .LabelContent .Choose-ModleList-PlaceHolder {
+  width: 20rem;
+  height: 100vh;
+}
+.Material .LabelContent .Choose-ModleList {
+  right: 0;
+  position: fixed;
+  background: #3B3B3B4D;
+  height: 100vh;
+  width: 20rem;
+}
+.Material .LabelContent .Choose-ModleList .card {
+  background: none;
+  color: white;
+  border: none;
+}
+.Material .LabelContent .Choose-ModleList .card .card-header {
+  padding-left: 0;
+  background: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #99999940;
+}
+.Material .LabelContent .Choose-ModleList .card .card-header svg {
+  position: absolute;
+  right: 0;
+  width: 0.6rem;
+  transform: translate(-50%, 0.3rem);
+}
+.Material .LabelContent .Choose-ModleList .card .list-group-item {
+  background: none;
+  border: none;
+  height: 4rem;
+  padding-left: 0;
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.Material .LabelContent .Choose-ModleList .card .list-group-item a svg {
+  position: absolute;
+  right: 0;
+  width: 0.6rem;
+  transform: translate(-50%, 1.2rem);
+}
+.Material .LabelContent .Choose-ModleList .card .list-group-item .Modlebox {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  background-color: #2B323A;
+  border: none;
+  border-radius: 7px;
+  margin-right: 1rem;
+}
+.Material .LabelContent .Choose-ModleList .card .list-group-item .Choose-Modle-Label {
+  color: white;
+  padding-top: 1.1rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+.Material .LabelContent .Choose-ModleList-hide {
+  visibility: hidden;
+}
+.Login {
+  width: 20rem;
+  height: 93vh;
+  background-color: #fff;
+  border-radius: 5px;
+  top: 5rem;
+  right: 0;
+  position: fixed;
+  transition-property: right;
+  transition-duration: 1s;
+}
+.Login .Form-header {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #c6c6c6;
+  padding-bottom: 4px;
+}
+.Login .Form-header a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  padding-bottom: 7px;
+}
+.Login .Form-header a:active {
+  border-bottom: 3px solid #338fec;
+}
+.Login .Form-header a.active {
+  border-bottom: 3px solid #338fec;
+}
+.Login .Form-close {
+  display: flex;
+  justify-content: right;
+}
+.Login .Form-close svg {
+  color: #3b3b3b;
+  display: inline-block;
+  font-size: 26px;
+  margin-top: 0.6rem;
+}
+.Login .Login-Btn {
+  border-style: none;
+  background-color: #338fec;
+  width: 7rem;
+  height: 2.8rem;
+  margin: 3rem auto;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.Login .userName-text {
+  border: none;
+  background: transparent;
+  position: absolute;
+  font-size: 20px;
+  right: 2.8rem;
+  top: 9.3rem;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #ccc;
+}
+.Login .Login-Control {
+  background-color: #f5f5f5;
+}
+.Login .Password-Lookfor {
+  color: #ccc;
+  font-size: 12px;
+  text-decoration: none;
+  position: absolute;
+  right: 2.8rem;
+}
+.Login {
+  width: 20rem;
+  height: 93vh;
+  background-color: #fff;
+  border-radius: 5px;
+  top: 5rem;
+  right: 0;
+  position: fixed;
+  transition-property: right;
+  transition-duration: 1s;
+}
+.Login .Form-header {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #c6c6c6;
+  padding-bottom: 4px;
+}
+.Login .Form-header a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  padding-bottom: 7px;
+}
+.Login .Form-header a:active {
+  border-bottom: 3px solid #338fec;
+}
+.Login .Form-header a.active {
+  border-bottom: 3px solid #338fec;
+}
+.Login .Form-close {
+  display: flex;
+  justify-content: right;
+}
+.Login .Form-close svg {
+  color: #3b3b3b;
+  display: inline-block;
+  font-size: 26px;
+  margin-top: 0.6rem;
+}
+.Login .Login-Btn {
+  border-style: none;
+  background-color: #338fec;
+  width: 7rem;
+  height: 2.8rem;
+  margin: 3rem auto;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.Login .userName-text {
+  border: none;
+  background: transparent;
+  position: absolute;
+  font-size: 20px;
+  right: 2.8rem;
+  top: 9.3rem;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #ccc;
+}
+.Login .Login-Control {
+  background-color: #f5f5f5;
+}
+.Login .Password-Lookfor {
+  color: #ccc;
+  font-size: 12px;
+  text-decoration: none;
+  position: absolute;
+  right: 2.8rem;
+}
+.Login-hide {
+  width: 20rem;
+  height: 93vh;
+  background-color: #fff;
+  border-radius: 5px;
+  top: 5rem;
+  right: 0;
+  position: fixed;
+  transition-property: right;
+  transition-duration: 1s;
+  right: -20rem;
+}
+.Login-hide .Form-header {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #c6c6c6;
+  padding-bottom: 4px;
+}
+.Login-hide .Form-header a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  padding-bottom: 7px;
+}
+.Login-hide .Form-header a:active {
+  border-bottom: 3px solid #338fec;
+}
+.Login-hide .Form-header a.active {
+  border-bottom: 3px solid #338fec;
+}
+.Login-hide .Form-close {
+  display: flex;
+  justify-content: right;
+}
+.Login-hide .Form-close svg {
+  color: #3b3b3b;
+  display: inline-block;
+  font-size: 26px;
+  margin-top: 0.6rem;
+}
+.Login-hide .Login-Btn {
+  border-style: none;
+  background-color: #338fec;
+  width: 7rem;
+  height: 2.8rem;
+  margin: 3rem auto;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.Login-hide .userName-text {
+  border: none;
+  background: transparent;
+  position: absolute;
+  font-size: 20px;
+  right: 2.8rem;
+  top: 9.3rem;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #ccc;
+}
+.Login-hide .Login-Control {
+  background-color: #f5f5f5;
+}
+.Login-hide .Password-Lookfor {
+  color: #ccc;
+  font-size: 12px;
+  text-decoration: none;
+  position: absolute;
+  right: 2.8rem;
+}
+.Login-hide .Form-header {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #c6c6c6;
+  padding-bottom: 4px;
+}
+.Login-hide .Form-header a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  padding-bottom: 7px;
+}
+.Login-hide .Form-header a:active {
+  border-bottom: 3px solid #338fec;
+}
+.Login-hide .Form-header a.active {
+  border-bottom: 3px solid #338fec;
+}
+.Login-hide .Form-close {
+  display: flex;
+  justify-content: right;
+}
+.Login-hide .Form-close svg {
+  color: #3b3b3b;
+  display: inline-block;
+  font-size: 26px;
+  margin-top: 0.6rem;
+}
+.Login-hide .Login-Btn {
+  border-style: none;
+  background-color: #338fec;
+  width: 7rem;
+  height: 2.8rem;
+  margin: 3rem auto;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.Login-hide .userName-text {
+  border: none;
+  background: transparent;
+  position: absolute;
+  font-size: 20px;
+  right: 2.8rem;
+  top: 9.3rem;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #ccc;
+}
+.Login-hide .Login-Control {
+  background-color: #f5f5f5;
+}
+.Login-hide .Password-Lookfor {
+  color: #ccc;
+  font-size: 12px;
+  text-decoration: none;
+  position: absolute;
+  right: 2.8rem;
+}
+.imgList {
+  display: grid;
+}
+.imgList .imglis {
+  font-weight: 600;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+}
+.imgList .imglis img {
+  width: 50px;
+}
+.AssetTypeSearch {
+  width: 5rem;
+  height: 100%;
+}
+.AssetTypeSearch svg {
+  font-size: 30px;
+}
+.AssetTypeSearch .card {
+  background: none;
+  border: none;
+}
+.AssetTypeSearch .card .AssetType-Choose a {
+  display: block;
+  margin-bottom: 1rem;
+}
+.AssetTypeSearch .card .AssetType-Choose .active {
+  color: #01070c;
+}
+.AssetTypeSearch .card .AssetType-Choose .normol {
+  color: white;
+}
+.AssetTypeSearch .card .AssetType-Choose svg {
+  margin-bottom: 1rem;
+}
+.Auction {
+  color: white;
+}
+.Auction .Title-Nav {
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+}
+.Auction .Title-Nav .col {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+}
+.Auction .Title-Nav .col-select {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 25px;
+  color: #000000;
+}
+.Auction h4 {
+  text-align: center;
+  font-family: 'Pangmeng';
+  margin-bottom: 3rem;
+  font-size: 50px;
+}
+.Auction .AuctionList {
+  text-align: left;
+}
+.Auction .AuctionList h2 {
+  font-weight: bold;
+  margin-left: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+}
+.Auction .AuctionList .list-group-item {
+  background: none;
+  border: none;
+  color: white;
+  display: flex;
+  font-family: 'Pangmeng';
+}
+.Auction .AuctionList .list-group-item .col {
+  font-family: 'SiYuanHeiTiHeavy';
+}
+.Auction .AuctionList .list-group-item .btn {
+  all: unset;
+  /* Removes all default styling */
+  display: inline-block;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+  /* Smooth transition for background color and transform */
+  user-select: none;
+  /* Prevent text selection */
+}
+.Auction .AuctionList .list-group-item .btn:hover {
+  transform: scale(1.05);
+  /* Slightly larger on hover */
+}
+.Auction .AuctionList .list-group-item .btn:active {
+  transform: scale(0.95);
+  /* Slightly smaller on click */
+}
+.Account {
+  color: white;
+}
+.Account .Title-Nav {
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+}
+.Account .Title-Nav .col {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+}
+.Account .Title-Nav .col-select {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 25px;
+  color: #000000;
+}
+.Account h4 {
+  text-align: center;
+  font-family: 'Pangmeng';
+  margin-bottom: 3rem;
+  font-size: 50px;
+}
+@media screen and (max-width: 600px) {
+  .main {
+    display: grid;
+    height: 100%;
+  }
+  .LabelCalculator {
+    max-height: 20rem;
+  }
+  .LabelCalculator .Search {
+    min-width: 0;
+    min-height: 0;
+    width: 90%;
+    max-height: 20rem;
+    padding: 0;
+  }
+  .LabelCalculator .Search .Cl-List {
+    max-height: 16rem;
+  }
+  .LabelContent {
+    max-height: 38.6rem;
+  }
+}
+.filter-form {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 10px;
+}
+.filter-form h2 svg {
+  font-size: 45px;
+  margin-bottom: 5px;
+}
+.filter-form .btn {
+  margin-top: 2rem;
+  margin-right: 2rem;
+  height: 40px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+.filter-form .btn:hover {
+  color: black;
+}
+.DomainList {
+  margin-top: 1rem;
+  padding: 1rem;
+  height: 90vh;
+  position: relative;
+}
+.DomainList .DomainList-form svg {
+  position: absolute;
+  left: 20px;
+  top: 102px;
+}
+.DomainList .form-control {
+  color: white;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  font-size: 30px;
+}
+.DomainList .form-control option {
+  color: #000;
+}
+.DomainList .form-control::placeholder {
+  color: white;
+  font-size: 30px;
+}
+.DomainList .sort {
+  font-size: 20px;
+  font-weight: bold;
+  width: 6rem;
+  padding-left: 2rem;
+  background: none;
+  cursor: pointer;
+  border: none;
+}
+.DomainList .list-group-item {
+  background: none;
+  color: white;
+  height: 60px;
+  line-height: 40px;
+}
+.DomainList .list-group-item .btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+.DomainList .list-group-item .btn:hover {
+  color: black;
+}

@@ -1,0 +1,762 @@
+*{
+list-style: none;
+text-decoration: none;
+border-style: none;
+color: inherit;
+}
+@font-face {
+    font-family: 'SiYuanHeiTiNormal';
+    src: url('../assets/fonts/SiYuanHeiTi/CN-Normal.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'SiYuanHeiTiHeavy';
+    src: url('../assets/fonts/SiYuanHeiTi/CN-Heavy.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'SiYuanHeiTiLight';
+    src: url('../assets/fonts/SiYuanHeiTi/CN-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'Pangmeng';
+    src: url('../assets/fonts/庞门正道标题体2.0增强版.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  a{
+    list-style: none;
+    text-decoration: none;
+    border-style: none;
+    color: inherit;
+    }
+input{
+    border: solid 1px #000;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    // background: #000;
+    overflow:hidden;
+}
+#root{
+    height: 100%;
+}
+.App{
+    height: 100%;
+}
+.main{
+    height: 100%;
+    display: flex;
+    width: 104%;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    list-style: none;
+    text-decoration: none;
+    border-style: none;
+    color: inherit;  
+    font-weight: 600;
+    color: white;  
+    svg{
+        margin-bottom: 0.3rem;
+    }
+    h3{
+        margin-top: 0.8rem;
+    }
+   
+    
+}
+.drop-zone{
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+   
+}
+.drop-zoneactive{
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+.Eventlistener{
+    width: 100%;
+    height: 100%;
+}
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+.TopNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+    .Btn-login{
+        background: none;
+        border: none;
+        margin-right: 2.5rem;
+        transition: 1s;
+        a{  
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            svg{
+                display: inline-block;
+                font-size: 26px;
+                margin-right: 0.8rem;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .Btn-login:active{
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    .Btn-login:hover{
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.LabelCalculator{
+    display: grid;
+    align-content: start;
+    .Link-List{
+        position: absolute;
+        left: 32%;
+        top: 35%;
+        width: 50%;
+        .col-6{
+            text-align: right;
+        }
+        .btn{
+            background: none;
+            color: white;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            &:hover{
+                color: black;
+            }
+            svg{
+                margin-bottom: 3px;
+            }
+        }
+        .Buy{
+            svg{
+                margin-right: 10px;
+            }
+        }
+    }
+    .domain-Link{
+        a{
+            list-style: none;
+            color: white;
+            text-decoration: none;
+            font-size: 25px;
+            &:hover{
+                color: black;
+            }
+        }
+
+    }
+    h2{
+        position: absolute;
+        width: 100%;
+        height: 6%;
+        top: 15%;
+        font-weight:bold ;
+        color: white;
+        text-align: center;
+    }
+    .form-control{
+        position: absolute;
+        width: 50%;
+        left: 32%;
+        height: 6%;
+        top: 25%;
+        font-size: 18px;
+        background: rgba(0, 0, 0, 0.2);
+        border: none;
+        transition: 0.5s;
+        &::placeholder{
+            color: white;
+        }
+        &:focus{
+            width: 60%;
+            height: 8%;
+            border: none;
+        }
+    }
+    .Search{
+        min-height: 100vh;
+        height: 100vh;
+        display: flex;
+        width: 15rem;
+
+        font-family: 'SiYuanHeiTiNormal' !important;
+        .form-check-input{
+            border: 1px solid rgb(115, 115, 115);
+        }
+        .form-check-input:focus{
+            box-shadow: none !important;
+        }
+        .form-check-input:checked{
+            border: 1px solid white;
+        }
+        .form-control:focus{
+            box-shadow: none !important;
+        }
+        overflow: hidden;
+        .ClassSearch{
+            padding: 0;
+            height: 100%;
+            border-right: 1px solid rgb(100, 100, 100);
+            .list-group{
+                margin-bottom: 0.5rem;
+                padding-left:1.5rem;
+                font-size: 16px;
+            }
+            .Cl-List{
+                padding-left:3rem;
+                padding-bottom:1rem;
+                height: 82.5vh;
+                overflow-y:scroll;
+                margin-right: 0.5rem;
+                &::-webkit-scrollbar {
+                    width: 5px;
+                  }
+                  &::-webkit-scrollbar-thumb {
+                    background-color: darkgrey; 
+                    border-radius: 7px; 
+                  }
+                  &::-webkit-scrollbar-track {
+                    border-radius: 7px;
+                  }
+            }
+            .input-group-text{
+                border: 0 none !important; 
+                padding: 0 !important; 
+                background-color: transparent !important; 
+                border-radius: 0 !important; 
+                color: white;
+                .form-check-input{
+                    background-color: #000000;
+                    margin-right: 0.5rem;
+                    margin-left: 0.1rem;
+                    margin-top: 0.3rem;
+                    width: 0.8rem;
+                    height: 0.8rem;
+                    border-radius: 0 ;
+                }
+            }
+            .list-group-item {
+                display: flex;
+                border: 0 none !important; 
+                padding: 0 !important; 
+                background-color: transparent !important; 
+                border-radius: 0 !important; 
+                color: white;
+                margin-bottom: 0.8rem;
+                svg{
+                    border: none;
+                    background: transparent;
+                    position: absolute;
+                    bottom: 0.4rem;
+                    top: 0.3rem;
+                    left:-1.5rem;
+                    color: white;                      
+                }
+              }
+              .Search-Cl svg{
+                border: none;
+                background: transparent;
+                position: absolute;
+                font-size: 20px;
+                left: 0.5rem;
+                top: 1.1rem;
+                transform: translateY(-50%);
+                z-index: 10;
+                color: rgb(100, 100, 100);
+            }
+            .Search-Cl .form-control{
+                padding-left:2rem;
+                color: #fff;
+                border: none;
+                border-left: 1px solid rgb(100, 100, 100);
+                border-radius: 0;
+                background-color: rgb(26, 26, 26);
+                border-bottom: 1px solid rgb(54, 54, 54);
+            }
+            .class .form-control{
+                border-left: none;
+            }
+            .Search-Cl .form-control::placeholder{
+                color: rgb(100, 100, 100);
+            }
+        } 
+    }
+}
+
+.Material{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    align-content: start;
+    .LabelCalculator{
+        width: 100%;
+    }
+    .LabelContent{
+        width: 100%;
+        height: 92.5vh;
+        margin-left: -0.1rem;
+        padding-bottom: 3rem;
+        margin-top: 15%;
+        margin-left: 25%;
+        color: white;
+        overflow-y:scroll;
+        &::-webkit-scrollbar {
+            width: 5px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: darkgrey; 
+            border-radius: 7px; 
+          }
+        h2{
+            margin-top: 2rem;
+            margin-left: 2rem;
+        }
+        .ModleList{
+            flex-direction:row;
+            flex-wrap: wrap; 
+            .Modlebox{
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: inline-block; 
+                color: white;
+                display: grid;
+                width: 12rem;
+                height: 12rem;
+                background-color: rgba(0, 0, 0, 0.2);
+                border: none;
+                margin-top: 2rem;
+                margin-left: 2rem;
+            }
+            .Modlebox-isselect{
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: inline-block; 
+                color: white;
+                width: 12rem;
+                height: 12rem;
+                background-color: rgba(0, 0, 0, 0.5);
+                border: 2px solid #869fbd;
+                margin-top: 2rem;
+                margin-left: 2rem;
+            }
+            .Modlebox:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transform: scale(1.05); 
+                transition: transform 0.3s ease; 
+                border-color: #4B535C;
+                background-color: rgba(0, 0, 0, 0.3);
+              }
+        }
+        .Choose-ModleList-PlaceHolder{
+            width: 20rem;
+            height: 100vh;
+        }
+        .Choose-ModleList{
+            right: 0;
+            position: fixed;
+            background: #3B3B3B4D;
+            height: 100vh;
+            width: 20rem;
+            .card{
+                background: none;
+                color: white;
+                border: none;
+                .card-header{
+                    padding-left: 0;
+                    background: none;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    border-bottom: 1px solid #99999940;
+                    svg{
+                        position: absolute;
+                        right: 0;
+                        width: 0.6rem;
+                        transform: translate(-50%,0.3rem);
+                    }
+                }
+                .list-group-item{
+                    background: none;
+                    border: none;
+                    height: 4rem;
+                    padding-left: 0;
+                    display: flex;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                        a{
+                            svg{
+                                    position: absolute;
+                                    right: 0;
+                                    width: 0.6rem;
+                                    transform: translate(-50%,1.2rem);
+                                }
+                            }
+                    .Modlebox{
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        display: inline-block; 
+                        width: 4rem;
+                        height: 4rem;
+                        background-color: #2B323A;
+                        border: none;
+                        border-radius: 7px;
+                        margin-right: 1rem;
+                    }
+                    .Choose-Modle-Label{
+                        color: white;
+                        padding-top: 1.1rem;
+                        font-weight: 400;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+          .Choose-ModleList-hide {
+            visibility: hidden;
+        }
+    }
+}
+.Login{
+    width: 20rem;
+    height: 93vh;
+    background-color: #fff;
+    border-radius: 5px;
+    top: 5rem;
+    right: 0;
+    position: fixed;
+    transition-property: right; 
+    transition-duration: 1s; 
+    .Form-header{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        border-bottom: 3px solid rgb(198, 198, 198);
+        padding-bottom: 4px;
+        a{
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            padding-bottom: 7px;
+        }
+        a:active{
+            border-bottom: 3px solid rgb(51, 143, 236);
+        }
+        a.active{
+            border-bottom: 3px solid rgb(51, 143, 236);
+        }
+    }
+    .Form-close{
+        display: flex;
+        justify-content: right;
+        svg{
+            color: rgb(59, 59, 59);
+            display: inline-block;
+            font-size: 26px;
+            margin-top: 0.6rem;
+        }
+    }
+    .Login-Btn{
+        border-style: none;
+        background-color: rgb(51, 143, 236);
+        width: 7rem;
+        height: 2.8rem;
+        margin: 3rem auto;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+    .userName-text {
+        border: none;
+        background: transparent;
+        position: absolute;
+        font-size: 20px;
+        right: 2.8rem;
+        top: 9.3rem;
+        transform: translateY(-50%);
+        z-index: 10;
+        color: #ccc;
+      }
+    .Login-Control{
+        background-color: rgb(245, 245, 245);
+    }
+    .Password-Lookfor{
+        color: #ccc;
+        font-size: 12px;
+        text-decoration: none;
+        position: absolute;
+        right: 2.8rem;
+    }
+}
+.Login {
+    .Login(); 
+  }
+  
+  .Login-hide {
+    .Login(); 
+    right: -20rem;
+  }
+
+.imgList{
+    display: grid;
+    .imglis{
+        font-weight: 600;
+        border: 1px solid black;
+        margin-bottom: 1rem;
+        img{
+            width: 50px;
+        }
+    }
+}
+.AssetTypeSearch{
+    width: 5rem;
+    height: 100%;
+    svg{
+        font-size: 30px;
+    }
+    .card{
+        background: none;
+        border: none;
+        .AssetType-Choose{
+            a{
+                display: block;
+                margin-bottom: 1rem;
+
+            }
+            .active{
+                color:#01070c;
+
+            }
+            .normol{
+                color: white;
+
+            }
+            svg{
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+.Auction{
+    color: white;
+    .Title-Nav{
+        border-bottom: 3px solid rgba(255, 255, 255,0.3);
+        .col{
+            cursor:pointer;
+            font-weight: bold;
+            font-size: 25px;
+            color: white;
+        }
+        .col-select{
+            cursor:pointer;
+            font-weight: bold;
+            font-size: 25px;
+            color:  rgb(0, 0, 0);
+        }
+    }
+   h4{
+    text-align: center;
+    font-family: 'Pangmeng';
+    margin-bottom: 3rem;
+    font-size: 50px;
+   }
+   .AuctionList{
+    text-align: left;
+    h2{
+        font-weight: bold;
+        margin-left: 1rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid rgba(255, 255, 255,0.3);
+    }
+    .list-group-item{
+        background: none;
+        border: none;
+        color: white;
+        display: flex;
+        font-family: 'Pangmeng';
+        .col{
+            font-family: 'SiYuanHeiTiHeavy';
+        }
+        .btn {
+            all: unset; /* Removes all default styling */
+            // padding: 10px 20px;
+            display: inline-block;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s; /* Smooth transition for background color and transform */
+            user-select: none; /* Prevent text selection */
+          }
+          
+          .btn:hover {
+            transform: scale(1.05); /* Slightly larger on hover */
+          }
+          
+          .btn:active {
+            transform: scale(0.95); /* Slightly smaller on click */
+          }
+    }
+   }
+}
+.Account{
+    color: white;
+    .Title-Nav{
+        border-bottom: 3px solid rgba(255, 255, 255,0.3);
+        .col{
+            cursor:pointer;
+            font-weight: bold;
+            font-size: 25px;
+            color: white;
+        }
+        .col-select{
+            cursor:pointer;
+            font-weight: bold;
+            font-size: 25px;
+            color:  rgb(0, 0, 0);
+        }
+    }
+   h4{
+    text-align: center;
+    font-family: 'Pangmeng';
+    margin-bottom: 3rem;
+    font-size: 50px;
+   }
+   
+}
+@media screen and( max-width:600px) {
+    .main{
+        display: grid;
+        height: 100%;
+    }
+        .LabelCalculator{
+            max-height: 20rem;            
+            .Search{
+                min-width: 0;
+                min-height: 0;
+                width: 90%;
+                max-height: 20rem;
+                padding: 0;
+                .Cl-List{
+                    max-height: 16rem;
+                }
+            }
+        }
+        .LabelContent{
+            max-height: 38.6rem;
+        }
+   
+}
+.filter-form{
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+    h2{
+        svg{
+            font-size: 45px;
+            margin-bottom: 5px;
+        }
+    }
+    .btn{
+        margin-top: 2rem;
+        margin-right: 2rem;
+        height: 40px;
+        background: none;
+        border:  none;
+        font-size: 20px;
+        font-weight: bold;
+        &:hover{
+            color: black;
+        }
+    }
+}
+.DomainList{
+    margin-top: 1rem;
+    padding: 1rem;
+    height: 90vh;
+    position: relative;
+    .DomainList-form{
+        svg{
+            position: absolute;
+            left: 20px;
+            top: 102px;
+        }
+    }
+   
+    .form-control{
+        color: white;
+        border: none;
+        background:rgba(0, 0, 0, 0.2);
+        margin-bottom: 1rem;
+        font-size: 30px;
+        option{
+            color: #000;
+        }
+        &::placeholder{
+            color: white;
+            font-size: 30px;
+        }
+        
+    }
+    .sort{
+        font-size: 20px;
+        font-weight: bold;
+        width: 6rem;
+        padding-left: 2rem;
+        background: none;
+        cursor:pointer;
+        border: none;
+
+    }
+    .list-group-item{
+        background: none;
+        color: white;
+        height: 60px;
+        line-height: 40px;
+        .btn{
+            background: none;
+            border: none;
+            font-weight: bold;
+            font-size: 20px;
+            &:hover{
+                color: black;
+            }
+        }
+    }
+}
