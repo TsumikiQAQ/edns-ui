@@ -4,6 +4,7 @@ export interface ModleProps{
       AssetType: string
 }
 export interface Auction{
+    isDomain: any;
     herf: string | undefined;
       id: number;
     name: string;

@@ -2,7 +2,8 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import AuctionNavPage from "./AuctionNav"
 import MyAuctionPage from "./MyAuction"
 import CreateAuctionPage from "./CreateAuction" 
-import HistoryAuctionPage from "./HistoryAuction"
+import AuctionInfoPage from "./AuctionInfo"
+import React from "react"
 const AuctionPage=()=>{
     return(
         <AuctionNavPage>
@@ -10,9 +11,9 @@ const AuctionPage=()=>{
         <Route path="/" element={<MyAuctionPage />} children={<Route path="/auction/myAuction" element={<MyAuctionPage />}></Route>}/>
         <Route path="/myAuction" element={<MyAuctionPage />}></Route>
         <Route path="/createAuction" element={<CreateAuctionPage />}></Route> 
-        <Route path="/historyAuction" element={<HistoryAuctionPage />}></Route> 
+        <Route path="/auctionInfo" element={<AuctionInfoPage />}></Route> 
         </Routes>
-    </AuctionNavPage>
+        </AuctionNavPage>
     )
 }
 export default AuctionPage

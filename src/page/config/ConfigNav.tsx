@@ -83,12 +83,12 @@ export const AuctionList = ({ title, auctions, onSelect }: { title: string, auct
         ))}
     </ListGroup>
 );
-const AuctionNavPage = ({children}:{children:any}) => {
+const ConfigNav = ({children}:{children:any}) => {
     let logged = true
     const [auctions, setAuctions] = useState<Auction[]>([]);
     const [selectedAuction, setSelectedAuction] = useState<Auction | null>();
     const [hidden, setHidden] = useState(true)
-    const [title, setTitle] = useState('我的拍卖')
+    const [title, setTitle] = useState('管理账户')
     const navigate = useNavigate();
     const handleClick =(str:string)=>{
         setTitle(str)
@@ -102,14 +102,11 @@ const AuctionNavPage = ({children}:{children:any}) => {
     useEffect(()=>{
         let url = window.location.href.split('/')
         
-        if(url[4]=='myAuction'){
-            setTitle('我的拍卖')
-        }else if(url[4]=='createAuction'){
-            setTitle('创建拍卖')
+        if(url[4]=='accountInfo'){
+            setTitle('管理账户')
         }else if(url[4]=='auctionInfo'){
-            setTitle('拍卖详情')
+            setTitle('管理拍卖')
         }
-        
     },[window.location.href])
 
     return (
@@ -118,13 +115,12 @@ const AuctionNavPage = ({children}:{children:any}) => {
                 <Col>
                     <Container className="Auction">
                     <Row>
-                        <h4>拍卖</h4>
+                        <h4>管理</h4>
                     </Row>
                     <Row>
                     <Row className="Title-Nav">
-                    <Col xs={3} className={title==='我的拍卖' ?'col-select':'col'} onClick={()=>handleClick('我的拍卖')}><Link to={'/auction/myAuction'}>我的拍卖</Link> </Col>
-                    <Col  xs={3} className={title==='创建拍卖' ?'col-select':'col'} onClick={()=>handleClick('创建拍卖')}><Link to={'/auction/createAuction'}>创建拍卖</Link></Col>
-                    <Col  xs={3} className={title==='拍卖详情' ?'col-select':'col'}   onClick={()=>handleClick('拍卖详情')}><Link to={'/auction/auctionInfo'}>拍卖详情</Link></Col></Row>
+                    <Col xs={3} className={title==='管理账户' ?'col-select':'col'} onClick={()=>handleClick('管理账户')}><Link to={'/config/accountInfo'}>管理账户</Link> </Col>
+                    <Col  xs={3} className={title==='管理拍卖' ?'col-select':'col'} onClick={()=>handleClick('管理拍卖')}><Link to={'/config/auctionInfo'}>管理拍卖</Link></Col></Row>
                     {children}
                     </Row>
                     </Container>
@@ -139,4 +135,4 @@ const AuctionNavPage = ({children}:{children:any}) => {
 
 
 
-export default AuctionNavPage
+export default ConfigNav

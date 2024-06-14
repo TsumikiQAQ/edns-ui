@@ -1,94 +1,129 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
-import { useState} from "react";
-import Material from "../Material";
+import { Button, Col, Form, FormControl, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
+import { useContext, useEffect, useState} from "react";
 import { Auction } from "../../interface";
 import { FaStar } from "react-icons/fa";
 import { FaMoneyBillWave } from "react-icons/fa";
+import { PiSignatureBold } from "react-icons/pi";
+import { ethers } from "ethers";
+import { DomainContractContext,AccoutInfoContext } from "../../../components/filedrag/dragelistener";
 
 const SearchPage = () => {
-    const aucArr = [
-        {
-            id: 1,
-            name: "Antique Vase",
-            description: "A beautiful antique vase from the Ming dynasty.",
-            startPrice: 1000,
-            currentBid: 1500,
-            startTime: "2023-10-01T12:00:00Z",
-            endTime: "2023-10-15T12:00:00Z",
-            images: ["https://example.com/images/vase1.jpg", "https://example.com/images/vase2.jpg"],
-            category: "Antiques",
-            status: "Active",
-            herf:'http://www.baidu.com'
-        },
-        {
-            id: 2,
-            name: "Vintage Rolex Watch",
-            description: "A rare vintage Rolex watch from 1952.",
-            startPrice: 5000,
-            currentBid: 7500,
-            startTime: "2023-11-01T12:00:00Z",
-            endTime: "2023-11-15T12:00:00Z",
-            images: ["https://example.com/images/watch1.jpg", "https://example.com/images/watch2.jpg"],
-            category: "Watches",
-            status: "Active",
-            herf:'http://www.bing.com'
-        },
-        {
-            id: 3,
-            name: "Signed Basketball",
-            description: "A basketball signed by Michael Jordan.",
-            startPrice: 200,
-            currentBid: 450,
-            startTime: "2023-12-01T12:00:00Z",
-            endTime: "2023-12-15T12:00:00Z",
-            images: ["https://example.com/images/basketball1.jpg"],
-            category: "Sports",
-            status: "Active",
-            herf:'http://www.google.com'
+    const {contractInstance} = useContext(DomainContractContext)
+    const   {accoutInfo} = useContext(AccoutInfoContext)
+
+    const [searchDomain,setSearchDomain] = useState<any>()
+    const [searchIP,setSearchIP] = useState<any>('')
+    const [domain, setDomain] = useState('');
+    const navigate = useNavigate();
+
+    const resolveDomain = (domain: string) => {
+        let strArr = domain.split('/')
+        if (strArr.length === 0) throw new Error('error domain')
+        
+        let domainAndPort = strArr[0];  // 可能包含端口号的部分
+        let domainOnly = domainAndPort;
+        let port = '';
+    
+        // 检查域名部分是否包含端口号
+        if (domainAndPort.includes(':')) {
+            const splitDomain = domainAndPort.split(':');
+            domainOnly = splitDomain[0];
+            port = splitDomain[1];
         }
-    ];
-    const Link = ({ item }: { item: Auction}) => {
+    
+        if (strArr.length === 1) {
+            return { domain: domainOnly, port, params: '' }
+        } else {
+            let params = strArr.filter((item, index) => {
+                return index > 0
+            }).join('/')
+            return { domain: domainOnly, port, params }
+        }
+    }
+    const addFavoriteDomain =async ()=>{
+        await contractInstance.addFavoriteDomain(domain)
+    }
+    const handleCreateClick =(name:string)=>{
+        navigate({ pathname: "/auction/createAuction"},{state:name})
+    }
+    const handleInfoClick =(name:string)=>{
+        navigate({ pathname: "/auction/auctionInfo"},{state:name})
+    }
+    const handleSearch = ()=>{
+        const{port, params} = resolveDomain(domain)
+        let url ='http://' + searchIP+":"+ port +'/'+params
+        window.open(url, '_blank');
+    }
+    useEffect(()=>{
+    const DomainSearch=async ()=>{
+        let Dname = resolveDomain(domain).domain
 
+        let dm = await contractInstance.getDomain(Dname)
+        let atN = await contractInstance.getAuctionName(Dname)
+        
+        let at = await contractInstance.auctions(atN)
+        setSearchIP(dm[2]);
+        
+        if(at[0] && dm[0] === ''){
+            setSearchDomain({name:at[0],isAuction:true})
+        }else if(dm[0]){
+            setSearchDomain({name:dm[0],amout:ethers.formatEther(dm[4]),herf:dm[2],isAuction:false})
+        }else{
+            setSearchDomain({name:Dname,herf:'#',isAuction:false})
+        }
+    }
+    domain && DomainSearch()
+      
+    },[domain])
+    const debounce = (func: Function, delay: number)=>{
+        let timer: NodeJS.Timeout;
+        return  (...args: any[]) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            func.apply(this, args);
+          }, delay);
+        };
+      }
+      const handleChange:React.ChangeEventHandler<HTMLInputElement> = (e)=>{
+        setDomain(e.target.value);
+    }
+    const debouncedHandleChange = debounce(handleChange, 300);
 
-        return (
+    const Link = ({ item }: { item: any}) => {
+
+        return domain ?  (
             <Row className="domain-Link">
                 <Col > <a href={item.herf} target="blank">
                 <strong>
-                    {item.name}
+                {item.isAuction?<>{item.name} {' (拍卖中)'}</>:<>{`${item.name}  ${item.amout?item.amout + 'ETH':'(未注册)'}`}</>}
                 </strong>
                 </a>
 </Col>
-                <Col xs={6}><Button className="Buy"> <FaMoneyBillWave />购买</Button><Button className="Star"><FaStar /> 收藏</Button></Col>
+                <Col xs={6}><Button className="Buy" onClick={()=>item.isAuction?handleInfoClick(item.name):handleCreateClick(item.name)}> {item.isAuction?<><FaMoneyBillWave />参与拍卖</> :<><PiSignatureBold />发起拍卖</>}</Button>{accoutInfo[4].indexOf(domain) ==-1 ?<Button className="Star" onClick={addFavoriteDomain}><FaStar /> 收藏</Button>:<Button className="Star" style={{color:'black'}} onClick={()=>handleCreateClick(item.name)}><FaStar /> 已收藏</Button>}</Col>
                
             </Row>
-        );
+        ):<></>;
     };
-    function DomainSearch() {
-        const [domain, setDomain] = useState('');
-
-
-        return (
-            <Form >
-                <Form.Group controlId="formDomain">
-                    <Form.Control
-                        type="text"
-                        value={domain}
-                        onChange={(e) => setDomain(e.target.value)}
-                    />
-                </Form.Group>
-            </Form>
-        );
-    }
-
 
     return (
         <Row className="LabelCalculator">
             <h2>搜索域名</h2>
-            <DomainSearch></DomainSearch>
+            <Form >
+                    <FormControl
+                        type="text"
+                        onChange={debouncedHandleChange}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault();
+                                handleSearch()
+                            }
+                        }}
+                    />
+            </Form>            
             <Col className="Link-List">
-            {aucArr.map((item)=>{
-                return <Link item={item}/>
-            })}
+                {searchDomain && <Link item={searchDomain}/>}
             </Col>
         </Row>
     );

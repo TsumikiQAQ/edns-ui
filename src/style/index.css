@@ -23,6 +23,12 @@
   font-style: normal;
 }
 @font-face {
+  font-family: 'SiYuanHeiTiMedium';
+  src: url('../assets/fonts/SiYuanHeiTi/CN-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: 'Pangmeng';
   src: url('../assets/fonts/庞门正道标题体2.0增强版.ttf') format('opentype');
   font-weight: normal;
@@ -42,10 +48,11 @@ html {
 }
 body {
   height: 100%;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #00ffc3);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   overflow: hidden;
+  font-family: 'SiYuanHeiTiMedium';
 }
 #root {
   height: 100%;
@@ -119,6 +126,9 @@ body {
   text-decoration: none;
   font-size: 18px;
 }
+.TopNav .Btn-login a:hover {
+  color: #000;
+}
 .TopNav .Btn-login a svg {
   display: inline-block;
   font-size: 26px;
@@ -171,7 +181,7 @@ body {
 }
 .LabelCalculator h2 {
   position: absolute;
-  width: 100%;
+  width: 90%;
   height: 6%;
   top: 15%;
   font-weight: bold ;
@@ -196,6 +206,7 @@ body {
   width: 60%;
   height: 8%;
   border: none;
+  left: 27%;
 }
 .LabelCalculator .Search {
   min-height: 100vh;
@@ -741,6 +752,56 @@ body {
 .Auction {
   color: white;
 }
+.Auction .CreateAuctionPage .Auction-history {
+  padding-top: 10%;
+}
+.Auction .CreateAuctionPage .Auction-history .Auction-history-Title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 1.5rem;
+  margin-bottom: 30px;
+}
+.Auction .Auction-title h2 {
+  font-family: 'Pangmeng';
+  font-size: 50px;
+  text-align: center;
+}
+.Auction .Auction-title h5 {
+  font-family: 'Pangmeng';
+  text-align: center;
+}
+.Auction .Auction-title .BidValue {
+  text-align: center;
+  font-size: 25px;
+}
+.Auction .Auction-title .BidValue span {
+  font-family: 'Pangmeng';
+  font-size: 30px;
+}
+.Auction .Auction-title .btnrow {
+  text-align: center;
+}
+.Auction .Auction-title .btnrow .btn {
+  width: 20%;
+  font-weight: bold;
+  font-size: 25px;
+  background: none;
+  border: none;
+  color: white;
+  border-right: 4px solid white ;
+  border-bottom: 4px solid white  ;
+  padding-left: 20px;
+  margin-right: 20px;
+  transition: 1s;
+}
+.Auction .Auction-title .btnrow .btn:hover {
+  color: black;
+  border: none;
+  border-left: 4px solid black;
+  border-top: 4px solid black;
+  transition: 1s;
+}
 .Auction .Title-Nav {
   border-bottom: 3px solid rgba(255, 255, 255, 0.3);
 }
@@ -804,6 +865,80 @@ body {
   transform: scale(0.95);
   /* Slightly smaller on click */
 }
+.Auction .AuctionInfoList .col {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.Auction .AuctionInfoList .col-2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.Auction .AuctionInfosList .col {
+  text-align: center;
+}
+.Auction .AuctionInfosList .col .btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 0;
+}
+.Auction .AuctionInfosList .col .btn:hover {
+  color: black;
+}
+.Auction .AuctionInfosList .col-2 {
+  text-align: center;
+}
+.Auction .AuctionInfosList-hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.Auction .Auction-history .Auction-history-Title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 1.5rem;
+  margin-bottom: 30px;
+}
+.Auction .BidHistoryInfoList {
+  height: 70vh;
+}
+.Auction .BidHistoryInfoList .BidHistoryInfos {
+  height: 50%;
+  overflow-y: scroll;
+  padding-bottom: 10%;
+}
+.Auction .BidHistoryInfoList .BidHistoryInfos::-webkit-scrollbar {
+  display: none;
+}
+.Auction .BidHistoryInfoList .BidHistoryInfos .BidHistoryInfosList {
+  padding: 0;
+}
+.Auction .BidHistoryInfoList .BidHistoryInfo {
+  margin-bottom: 2rem;
+  max-height: 10%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+}
+.Auction .BidHistoryInfoList .col-6 {
+  padding-left: 15%;
+}
+.Auction .BidHistoryInfoList .col {
+  padding-left: 15%;
+}
+.Auction .BidHistoryInfoList .BidHistoryInfoList-title {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+  font-weight: bold;
+}
 .Account {
   color: white;
 }
@@ -827,6 +962,91 @@ body {
   font-family: 'Pangmeng';
   margin-bottom: 3rem;
   font-size: 50px;
+}
+.Account .AuctionInfoList .col {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.Account .AuctionInfoList .col-2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.Account .AuctionInfoList .col-1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.Account .AuctionInfosList .col {
+  text-align: center;
+  line-height: 36px;
+}
+.Account .AuctionInfosList .col-2 {
+  text-align: center;
+  line-height: 36px;
+}
+.Account .AuctionInfosList .col-1 {
+  text-align: center;
+  line-height: 36px;
+}
+.Account .AuctionInfosList .btn {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.Account .AuctionInfosList .btn:hover {
+  color: black;
+}
+.Account .AuctionInfosList-hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.Account .TransferRequestCard {
+  background: none;
+  border: none;
+}
+.Account .TransferRequestCard .card-title {
+  text-align: center;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+}
+.Account .TransferRequestCard .TransferRequestCardList {
+  height: 450px;
+  overflow-y: scroll;
+  padding: 0 20px;
+}
+.Account .TransferRequestCard .TransferRequestCardList::-webkit-scrollbar {
+  display: none;
+}
+.Account .TransferRequestCard .TransferRequestCardBody {
+  height: 120px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}
+.Account .TransferRequestCard .TransferRequestCardBody .col-10 {
+  color: white;
+}
+.Account .TransferRequestCard .TransferRequestCardBody .col {
+  text-align: right;
+}
+.Account .TransferRequestCard .TransferRequestCardBody .col .btn {
+  height: 40px;
+  margin-top: 1rem;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+.Account .TransferRequestCard .TransferRequestCardBody .col .btn:hover {
+  color: black;
 }
 @media screen and (max-width: 600px) {
   .main {
@@ -877,6 +1097,13 @@ body {
   padding: 1rem;
   height: 90vh;
   position: relative;
+}
+.DomainList .DomainListGroup {
+  height: 55%;
+  overflow-y: scroll;
+}
+.DomainList .DomainListGroup::-webkit-scrollbar {
+  display: none;
 }
 .DomainList .DomainList-form svg {
   position: absolute;

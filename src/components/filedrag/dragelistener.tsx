@@ -5,12 +5,16 @@ export const HandleElementContext = createContext((e: any, select: boolean) => {
 export const ChooseElementContext = createContext<ChooseImgProps[]>([])
 export const SetImgListContext = createContext<React.Dispatch<React.SetStateAction<ChooseImgProps[]>>>(() => { })
 export const setCheckValueArrContext = createContext<React.Dispatch<React.SetStateAction<{ id: string, type: string }[]>>>(() => { })
-
+export const DomainContractContext = createContext<any>('')
+export const AccoutInfoContext = createContext<any>('')
 const DrageListener: React.FC<FiledragProps> = ({ children }) => {
   const [imglist, setImglist] = useState<ChooseImgProps[]>([])
   const [checkValueArr, setCheckValueArr] = useState<{ id: string, type: string }[]>([])
   const [url, setUrl] = useState<string | null>('')
-
+  const [contractInstance, setContractInstance] = useState<any>(null);
+  const [accoutInfo,setAccoutInfo] = useState('')
+  const account = {accoutInfo,setAccoutInfo}
+  const contract={contractInstance, setContractInstance}
   const startDrag = (e: any) => {
     if (e.target.role == 'button') {
       let id = e.target.id
@@ -62,20 +66,26 @@ const DrageListener: React.FC<FiledragProps> = ({ children }) => {
   }
   return (
     <HandleElementContext.Provider value={handleElement}>
+      <DomainContractContext.Provider value={contract}>
       <ChooseElementContext.Provider value={imglist}>
         <SetImgListContext.Provider value={setImglist}>
           <setCheckValueArrContext.Provider value={setCheckValueArr}>
+            <AccoutInfoContext.Provider value={account}>
             <div className='Eventlistener'
               onDragStart={startDrag}
               onDrop={stopDrag}
               onDragOver={dragOver}
-            >    {children}
+            >    
+            {children}
               <div>
               </div>
             </div>
+            </AccoutInfoContext.Provider>
           </setCheckValueArrContext.Provider>
         </SetImgListContext.Provider>
       </ChooseElementContext.Provider>
+     </DomainContractContext.Provider >
+
     </HandleElementContext.Provider>
   )
 }

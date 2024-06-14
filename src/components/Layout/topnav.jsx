@@ -1,62 +1,107 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { TopNavProps } from "../interface/layout"
 import LoginForm from "../../page/User/login"
 import { AiOutlineUser } from "react-icons/ai";
-import { Button } from "react-bootstrap";
+import { Button,Modal,Form } from "react-bootstrap";
 import { LoginFormContext } from ".";
 import { MdDns } from "react-icons/md";
 import { ethers } from "ethers";
-import LoginContract from "../../assets/LoginContract.json"
 import { Web3Provider } from '@ethersproject/providers';
 
+import DomainContractJson from "../../contract/DomainRegistry.sol/DomainRegistry.json"
+import { DomainContractContext,AccoutInfoContext } from "../filedrag/dragelistener";
+
 const TopNav = ({ logged }) => {
-    const { HideHandle } = useContext(LoginFormContext)
-
-    // 请求用户授权并获取用户的账户地址
-    async function getAccount() {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        return accounts[0];
+    const   {contractInstance, setContractInstance} = useContext(DomainContractContext)
+    const   {accoutInfo,setAccoutInfo} = useContext(AccoutInfoContext)
+    const [show,setShow] = useState(false)
+    const [registerName,setRegisterName] = useState('')
+    const [currency,setCurrency] = useState('')
+    const onHide = ()=>{
+      setShow(false)
     }
 
-    async function loginUser() {
-        const provider = new Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const account = await getAccount();
-
-
-        // 创建一个要签名的消息
-        const message = "message";
-
-        // 请求用户签名
-        const signature = await signer.signMessage(message);
-        console.log(signature);
-
-        // 创建合约实例
-        const contract = new ethers.Contract('0xbbe56866A45573B9346bBFa6c8868a41f12EA5d6', LoginContract.abi, signer);
-        console.log(account);
-
+    const registerAccount = async ()=>{
+      if(contractInstance){
+        if(registerName && currency){
+        await contractInstance.registerAccount(registerName,currency)
+        setShow(false)
+      }else{
+        alert('用户名或币种不能为空')
+      }}
+    }
+    const initialize = async () => {
         try {
-            const tx = await contract.loginUser(account, signature);
-            await tx.wait();
-            console.log('登录成功！');
+          // 连接到 MetaMask 提供的以太坊节点
+          if (window.ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = await provider.getSigner();
+            const contract = new ethers.Contract(process.env.REACT_APP_CONTRACT_ADDRESS, DomainContractJson.abi , signer);
+            setContractInstance(contract);
+          } else {
+            console.error('MetaMask not detected. Please install MetaMask and connect to an Ethereum network.');
+          }
         } catch (error) {
-            console.log('登录失败：' + error.message);
+          console.error('Error initializing contract interaction:', error);
         }
-    }
+     };
+     useEffect(()=>{
+      const getInfo = async ()=>{
+        if(contractInstance){
+          await contractInstance.getAccountInfo().then((result)=>{
+            setAccoutInfo(result)
+          }).catch(()=>{
+            setShow(true)
+          })
+        }
+      }
+      getInfo()
+     },[contractInstance])
 
+   
     const handleLogin = (e) => {
         e.preventDefault()
-        loginUser()
+        initialize();
     }
-
     return (
         <div className="TopNav">
             <a className="logo" href="/">
-                <h3><MdDns></MdDns>E-DNS</h3>
+                <h3><MdDns></MdDns>B-DNS</h3>
             </a>
             <Button className="Btn-login">
-                <a href="#" onClick={handleLogin}><AiOutlineUser /><strong>连接网站</strong></a>
+                <a href="#" onClick={handleLogin}><AiOutlineUser /><strong>{accoutInfo?`${accoutInfo[0]}`:'连接网站'}</strong></a>
             </Button>
+            <Modal show={show} onHide={onHide}>
+      <Modal.Header closeButton>
+        <Modal.Title>注册合约账户</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form.Group controlId="AccountName">
+        <Form.Label>用户名</Form.Label>
+          <Form.Control
+            type="text"
+            onChange={(e)=>{setRegisterName(e.target.value)}}
+          />
+        </Form.Group>
+        <Form.Group controlId="currency">
+        <Form.Label>设置币种</Form.Label>
+          <Form.Control
+            type="text"
+            onChange={(e)=>{setCurrency(e.target.value)}}
+          />
+        </Form.Group>
+       
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onHide}>
+          取消
+        </Button>
+        <Button variant="primary" onClick={registerAccount}>
+          确认
+        </Button>
+      </Modal.Footer>
+    </Modal>
         </div>
     )
 }

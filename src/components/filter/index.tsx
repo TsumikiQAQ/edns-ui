@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { MdManageSearch } from "react-icons/md";
 import { IoFilterOutline } from "react-icons/io5";
 import { GrClearOption } from "react-icons/gr";
+import { FilterContext } from '../../page/account/marktPage';
 
 const FilterComponent = () => {
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
-  const [minLength, setMinLength] = useState('');
-  const [maxLength, setMaxLength] = useState('');
-  const [type, setType] = useState('');
+  const {
+    minPrice,setMinPrice,
+    maxPrice,setMaxPrice,
+    maxLength,setMaxLength,
+    minLength,setMinLength,
+    type, setType} = useContext(FilterContext)
 
   const handleReset = () => {
     setMinPrice('');

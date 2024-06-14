@@ -4,9 +4,11 @@ import { LayoutProps } from "../interface/layout"
 import TopNav from "./topnav"
 import { Col, Row } from "react-bootstrap"
 import AssetTypeSearchPage from "../../page/Home/Search/assetTypeSearch"
+import React from "react"
 export const LoginFormContext = createContext<any>('')
 
 const Layout: React.FC<LayoutProps> = ({ logged, children }) => {
+
     const [hide, setHide] = useState(false)
     const HideHandle = (e: any) => {
         e.preventDefault()

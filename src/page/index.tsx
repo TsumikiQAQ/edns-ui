@@ -5,6 +5,7 @@ import DrageListener from "../components/filedrag/dragelistener"
 import HomePage from "./Home"
 import AuctionPage from "./auction"
 import AccountPage from "./account"
+import ConfigPage from "./config"
 export const PageIndex = () => {
     return (
         <DrageListener>
@@ -14,6 +15,7 @@ export const PageIndex = () => {
                     <Route path="/homePage/*" element={<HomePage />} />
                     <Route path="/account/*" element={<AccountPage />} />
                     <Route path="/auction/*" element={<AuctionPage />} />
+                    <Route path="/config/*" element={<ConfigPage />} />
                     <Route path="*" element={<Navigate to='/' replace />} />
                 </Routes>
             </Router>
